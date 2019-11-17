@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" th:replace="layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="content">
+    <div class="ui cards">
+
+        <div sec:authorize="hasRole('vip1')" class="card">
+            <!--有vip1时显示-->
+            <div class="content">
+                <div class="header">Vip1</div>
+                <div class="description">
+                    <a href="/vip1/1">Vip1-Page1</a><br>
+                    <a href="/vip1/2">Vip1-Page2</a><br>
+                    <a href="/vip1/3">Vip1-Page3</a><br>
+                </div>
+            </div>
+        </div>
+
+
+        <div sec:authorize="hasRole('vip2')" class="card">
+            <!--有vip2时显示-->
+            <div class="content">
+                <div class="header">Vip2</div>
+                <div class="description">
+                    <a href="/vip2/1">Vip1-Page1</a><br>
+                    <a href="/vip2/2">Vip1-Page2</a><br>
+                    <a href="/vip2/3">Vip1-Page3</a><br>
+                </div>
+            </div>
+        </div>
+
+        <div sec:authorize="hasRole('vip3')" class="card">
+            <!--有vip3时显示-->
+            <div class="content">
+                <div class="header">Vip3</div>
+                <div class="description">
+                    <a href="/vip3/1">Vip1-Page1</a><br>
+                    <a href="/vip3/2">Vip1-Page2</a><br>
+                    <a href="/vip3/3">Vip1-Page3</a><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
