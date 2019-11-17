@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component //交给spring托管，应为我们使用@Autowired注入了spring的接口
-public class CustomUserDetailsService implements UserDetailsService {
+public class CustomUserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     private UserService userService;
@@ -40,4 +40,5 @@ public class CustomUserDetailsService implements UserDetailsService {
         String password = new BCryptPasswordEncoder().encode(user.getPassword());
         return new User(user.getUsername(), password, grantedAuthorities);
     }
+
 }

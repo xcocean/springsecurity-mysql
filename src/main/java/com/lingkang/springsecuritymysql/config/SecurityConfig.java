@@ -1,9 +1,7 @@
 package com.lingkang.springsecuritymysql.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -30,9 +28,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     //由于我们自定义了UserDetailsService，我们需要新注入这个bean
     @Bean
     @Override //重写
-    public UserDetailsService  userDetailsServiceBean() {
+    public UserDetailsService userDetailsServiceBean() {
         //使用我们自定义的 UserDetailsService
-        return new CustomUserDetailsService();
+        return new CustomUserDetailsServiceImpl();
     }
 
     //认证----自定义认证
@@ -61,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.logout().logoutSuccessUrl("/")
                 .and().csrf().disable();
 
-        //开启记住我功能，表单提交remember的参数
+        //开启记住我功能，表单提交remember的参数。使用自定义认证后失效，需要到使用数据库实现他,这里没有实现
         http.rememberMe().rememberMeParameter("remember");
     }
 }
